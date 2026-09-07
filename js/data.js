@@ -3,21 +3,21 @@
 // ===================================================================
 
 const DESIGNS = [
-  { id: 1,  name: "Blooming Congratulations", occasion: "Wisuda",       price: 50000, img: "images/desain1.jpg" },
-  { id: 2,  name: "Soft Graduation",           occasion: "Wisuda",       price: 65000, img: "images/desain2.jpg" },
-  { id: 3,  name: "Classic Achievement",       occasion: "Wisuda",       price: 65000, img: "images/desain3.jpg" },
-  { id: 4,  name: "Garden Celebration",        occasion: "Wisuda",       price: 95000, img: "images/desain4.jpg" },
-  { id: 5,  name: "Elegant White",             occasion: "Wisuda",       price: 75000, img: "images/desain5.jpg" },
-  { id: 6,  name: "Forever & Always",          occasion: "Pernikahan",   price: 55000, img: "images/desain6.jpg" },
-  { id: 7,  name: "Love in Bloom",             occasion: "Pernikahan",   price: 85000, img: "images/desain7.jpg" },
-  { id: 8,  name: "Grand Opening",             occasion: "Grand Opening",price: 85000, img: "images/desain8.jpg" },
-  { id: 9,  name: "New Beginning",             occasion: "Soft Opening", price: 55000, img: "images/desain9.jpg" },
-  { id: 10, name: "Officially Yours",          occasion: "Pelantikan",   price: 45000, img: "images/desain10.jpg" },
-  { id: 11, name: "New Chapter",               occasion: "Wisuda",       price: 50000, img: "images/desain11.jpg" },
-  { id: 12, name: "Golden Anniversary",        occasion: "Anniversary",  price: 65000, img: "images/desain12.jpg" },
-  { id: 13, name: "Sweet Celebration",         occasion: "Anniversary",  price: 75000, img: "images/desain13.jpg" },
-  { id: 14, name: "Grand Launch",              occasion: "Opening",      price: 80000, img: "images/desain14.jpg" },
-  { id: 15, name: "Minimal Moment",            occasion: "Semua Acara",  price: 75000, img: "images/desain15.jpg" },
+  { id: 1,  name: "Fuchsia Finale", occasion: "Wisuda / Ulang Tahun", price: 50000, img: "images/desain1.jpg" },
+  { id: 2,  name: "Scarlet Radiance", occasion: "Wisuda / Pelantikan", price: 65000, img: "images/desain2.jpg" },
+  { id: 3,  name: "Ethereal Pastels", occasion: "Wisuda / Pernikahan / Opening", price: 65000, img: "images/desain3.jpg" },
+  { id: 4,  name: "Blush Rosace", occasion: "Wisuda / Ulang Tahun", price: 95000, img: "images/desain4.jpg" },
+  { id: 5,  name: "Natural Ivory", occasion: "Wisuda / Pernikahan / Opening", price: 75000, img: "images/desain5.jpg" },
+  { id: 6,  name: "Blush Radiance", occasion: "Pernikahan / Anniversary / Opening", price: 55000, img: "images/desain6.jpg" },
+  { id: 7,  name: "Mauve Serenade", occasion: "Wisuda / Pernikahan", price: 85000, img: "images/desain7.jpg" },
+  { id: 8,  name: "Serene Azure", occasion: "Wisuda / Pelantikan", price: 85000, img: "images/desain8.jpg" },
+  { id: 9,  name: "Crimson Arch", occasion: "Wisuda / Pelantikan / Pernikahan", price: 55000, img: "images/desain9.jpg" },
+  { id: 10, name: "Fuchsia Bloom Box", occasion: "Pernikahan / Anniversary", price: 45000, img: "images/desain10.jpg" },
+  { id: 11, name: "Celestial Frame", occasion: "Pelantikan / Pernikahan", price: 50000, img: "images/desain11.jpg" },
+  { id: 12, name: "Dusty Rose Canvas", occasion: "Anniversary / Pernikahan", price: 65000, img: "images/desain12.jpg" },
+  { id: 13, name: "Noir Elegance", occasion: "Pelantikan / Wisuda / Opening", price: 75000, img: "images/desain13.jpg" },
+  { id: 14, name: "Vintage Ivory", occasion: "Pernikahan", price: 80000, img: "images/desain14.jpg" },
+  { id: 15, name: "Peony Horizont", occasion: "Semua Acara", price: 75000, img: "images/desain15.jpg" },
 ];
 
 const ICONS = {

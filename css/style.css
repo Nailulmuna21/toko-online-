@@ -1,7 +1,7 @@
 /* ===================================================================
    Moment & Co. — stylesheet
    Palette: warm ivory, espresso type, muted sage + dusty rose accents
-   Type: Fraunces (display) + Work Sans (body/UI)
+   Type: Fraunces (display) + Work Sans
 =================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap');
@@ -17,6 +17,10 @@
   --rose-dark:#C68F84;
   --beige:#EFE4D3;
   --line:#E3D6C1;
+
+  /* Muted maroon for board CTA */
+  --maroon-muted: #7A3B3D;
+  --maroon-muted-dark: #662f31;
 
   --font-display:'Fraunces', serif;
   --font-body:'Work Sans', sans-serif;
@@ -190,6 +194,42 @@ input,select,textarea{ font-family:inherit; font-size:1rem; }
   grid-template-columns:1.05fr 0.85fr;
   gap:56px;
   align-items:center;
+   position: relative;
+   overflow: visible;
+}
+.hero-flower {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  width: 360px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-flower-preview {
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  width: 400px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero-flower {
+    width: 240px;
+    top: 15px;
+    left: 8px;
+    opacity: 0.9;
+  }
+   .hero-flower-preview {
+    width: 320px;
+    top: 20px;
+    left: -15px;
+    opacity: 0.9;
+  }
 }
 .hero-eyebrow{
   font-family:var(--font-display);
@@ -214,12 +254,186 @@ input,select,textarea{ font-family:inherit; font-size:1rem; }
   display:flex;
   align-items:center;
   justify-content:center;
+   z-index: 1;
 }
 .hero-art svg{ width:100%; height:auto; max-width:420px; }
 
 @media (max-width:900px){
   .hero .wrap{ grid-template-columns:1fr; }
   .hero-art{ order:-1; max-width:300px; margin:0 auto; }
+}
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Variasi untuk elemen yang masuk dari kiri */
+.scroll-reveal.from-left {
+  transform: translateX(-35px);
+}
+
+.scroll-reveal.from-left.is-visible {
+  transform: translateX(0);
+}
+
+
+/* Variasi untuk elemen yang masuk dari kanan */
+.scroll-reveal.from-right {
+  transform: translateX(35px);
+}
+
+.scroll-reveal.from-right.is-visible {
+  transform: translateX(0);
+}
+
+/* =========================================
+   PULSE BUTTON — SAMA UNTUK SEMUA BTN PRIMARY
+========================================= */
+
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Aura luar */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    120deg,
+    var(--rose),
+    var(--sage),
+    var(--rose),
+    var(--sage)
+  );
+  background-size: 300% 300%;
+
+  filter: blur(7px);
+  opacity: 0.65;
+
+  z-index: -2;
+
+  animation: buttonAura 3.5s ease-in-out infinite;
+}
+
+/* Ring pulse */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: inherit;
+
+  border: 2px solid rgba(223, 175, 166, 0.65);
+
+  box-shadow:
+    0 0 8px rgba(223, 175, 166, 0.45),
+    0 0 18px rgba(140, 154, 126, 0.35),
+    0 0 30px rgba(223, 175, 166, 0.22);
+
+  opacity: 0.7;
+
+  z-index: -1;
+
+  animation: buttonPulse 2.2s ease-in-out infinite;
+}
+
+
+/* Aura bergerak */
+@keyframes buttonAura {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(0.96);
+    opacity: 0.5;
+  }
+
+  50% {
+    background-position: 100% 50%;
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+
+  100% {
+    background-position: 0% 50%;
+    transform: scale(0.96);
+    opacity: 0.5;
+  }
+}
+
+
+/* Pulse membesar-mengecil */
+@keyframes buttonPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+
+/* Hover */
+.btn-primary:hover::before {
+  opacity: 0.9;
+  filter: blur(9px);
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+
+  box-shadow:
+    0 0 10px rgba(223, 175, 166, 0.65),
+    0 0 24px rgba(140, 154, 126, 0.5),
+    0 0 40px rgba(223, 175, 166, 0.35);
+}
+/* =========================================================
+   STAGGER BOARD CARD
+   ========================================================= */
+
+.board-card.scroll-reveal {
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .btn-primary::before,
+  .btn-primary::after {
+    animation: none;
+  }
 }
 
 /* ---------- Store info ---------- */
@@ -345,6 +559,18 @@ input,select,textarea{ font-family:inherit; font-size:1rem; }
 .board-price{ color:var(--espresso); font-weight:600; margin:2px 0 14px; }
 .price-unit{ color:var(--taupe); font-weight:400; font-size:0.8rem; }
 .board-body .btn{ margin-top:auto; }
+
+/* Override: make the board card CTA a muted maroon while keeping other primary buttons unchanged */
+.board-body .btn-primary{
+  background:var(--maroon-muted);
+  color:var(--ivory);
+  border-color:transparent;
+}
+.board-body .btn-primary:hover{
+  background:var(--maroon-muted-dark);
+  box-shadow:var(--shadow-lift);
+  transform:translateY(-1px);
+}
 
 /* ---------- Footer ---------- */
 .site-footer{
